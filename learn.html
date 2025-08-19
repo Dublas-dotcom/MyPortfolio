@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeLearn - Coding Lessons Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #ffd700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(rgba(52, 152, 219, 0.9), rgba(44, 62, 80, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%233498db" width="100" height="100"/><path fill="%232c3e50" d="M0 0L100 100" stroke-width="0"/></svg>');
+            background-size: cover;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        /* Filter Section */
+        .filters {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 40px auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: #f1f1f1;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filter-btn:hover {
+            background: #3498db;
+            color: white;
+        }
+        
+        .filter-btn.active {
+            background: #3498db;
+            color: white;
+        }
+        
+        /* Lessons Grid */
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .lesson-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .lesson-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .lesson-icon {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .html { background: linear-gradient(135deg, #e34c26, #f06529); }
+        .css { background: linear-gradient(135deg, #264de4, #2965f1); }
+        .js { background: linear-gradient(135deg, #F0DB4F, #323330); }
+        .python { background: linear-gradient(135deg, #306998, #FFD43B); }
+        .react { background: linear-gradient(135deg, #61dafb, #282c34); }
+        .node { background: linear-gradient(135deg, #68a063, #3c873a); }
+        
+        .lesson-content {
+            padding: 25px;
+        }
+        
+        .lesson-content h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .lesson-content p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .lesson-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+        
+        .lesson-level {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .beginner { background: #e8f6f3; color: #1abc9c; }
+        .intermediate { background: #e3f2fd; color: #3498db; }
+        .advanced { background: #fdedec; color: #e74c3c; }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #3498db;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Code<span>Learn</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Learn to Code with Interactive Lessons</h1>
+            <p>Explore our curated collection of coding lessons and start your journey to becoming a developer today</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Filter Section -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-globe"></i> All Technologies
+            </button>
+            <button class="filter-btn" data-filter="html">
+                <i class="fab fa-html5"></i> HTML
+            </button>
+            <button class="filter-btn" data-filter="css">
+                <i class="fab fa-css3-alt"></i> CSS
+            </button>
+            <button class="filter-btn" data-filter="js">
+                <i class="fab fa-js-square"></i> JavaScript
+            </button>
+            <button class="filter-btn" data-filter="python">
+                <i class="fab fa-python"></i> Python
+            </button>
+            <button class="filter-btn" data-filter="react">
+                <i class="fab fa-react"></i> React
+            </button>
+        </div>
+
+        <!-- Lessons Grid -->
+        <div class="lessons-grid">
+            <!-- HTML Lessons -->
+            <div class="lesson-card" data-tech="html">
+                <div class="lesson-icon html">
+                    <i class="fab fa-html5"></i>
+                </div>
+                <div class="lesson-content" ">
+                    
+                    <span class="lesson-level beginner">Beginner</span>
+                    <h3>HTML Fundamentals</h3>
+                    <p>Learn the building blocks of web development with HTML5, including semantic tags, forms, and accessibility.</p>
+                    <button onclick=""></button>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 3 hours</span>
+                        <span><i class="far fa-file-alt"></i> 12 lessons</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-card" data-tech="html">
+                <div class="lesson-icon html">
+                    <i class="fab fa-html5"></i>
+                </div>
+                <div class="lesson-content">
+                    <span class="lesson-level intermediate">Intermediate</span>
+                    <h3>HTML5 APIs</h3>
+                    <p>Explore advanced HTML5 features like Canvas, Web Storage, Geolocation, and Drag & Drop API.</p>
+                   
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 4.5 hours</span>
+                         <i class="fa-solid fa-chalkboard"><a href="Html.html" ">Learn now</a></i>
+                        <span><i class="far fa-file-alt"></i> 15 lessons</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CSS Lessons -->
+            <div class="lesson-card" data-tech="css">
+                <div class="lesson-icon css">
+                    <i class="fab fa-css3-alt"></i>
+                </div>
+                <div class="lesson-content">
+                    <span class="lesson-level beginner">Beginner</span>
+                    <h3>CSS Styling</h3>
+                    <p>Master the fundamentals of CSS including selectors, box model, positioning, and responsive design.</p>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 5 hours</span>
+                        <span><i class="far fa-file-alt"></i> 18 lessons</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-card" data-tech="css">
+                <div class="lesson-icon css">
+                    <i class="fab fa-css3-alt"></i>
+                </div>
+                <div class="lesson-content">
+                    <span class="lesson-level advanced">Advanced</span>
+                    <h3>CSS Animations</h3>
+                    <p>Create stunning animations and transitions with CSS to bring your websites to life.</p>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 3.5 hours</span>
+                        <span><i class="far fa-file-alt"></i> 10 lessons</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JavaScript Lessons -->
+            <div class="lesson-card" data-tech="js">
+                <div class="lesson-icon js">
+                    <i class="fab fa-js-square"></i>
+                </div>
+                <div class="lesson-content">
+                    <span class="lesson-level beginner">Beginner</span>
+                    <h3>JavaScript Basics</h3>
+                    <p>Learn the fundamentals of JavaScript including variables, functions, loops, and DOM manipulation.</p>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 6 hours</span>
+                        <span><i class="far fa-file-alt"></i> 22 lessons</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-card" data-tech="js">
+                <div class="lesson-icon js">
+                    <i class="fab fa-js-square"></i>
+                </div>
+                <div class="lesson-content">
+                    <span class="lesson-level intermediate">Intermediate</span>
+                    <h3>Modern JavaScript</h3>
+                    <p>Explore ES6+ features, asynchronous JavaScript, and modern development patterns.</p>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 7 hours</span>
+                        <span><i class="far fa-file-alt"></i> 24 lessons</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Python Lessons -->
+            <div class="lesson-card" data-tech="python">
+                <div class="lesson-icon python">
+                    <i class="fab fa-python"></i>
+                </div>
+                <div class="lesson-content">
+                    <span class="lesson-level beginner">Beginner</span>
+                    <h3>Python for Beginners</h3>
+                    <p>Start your programming journey with Python, learning syntax, data structures, and basic algorithms.</p>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 8 hours</span>
+                        <span><i class="far fa-file-alt"></i> 28 lessons</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-card" data-tech="python">
+                <div class="lesson-icon python">
+                    <i class="fab fa-python"></i>
+                </div>
+                <div class="lesson-content">
+                    <span class="lesson-level advanced">Advanced</span>
+                    <h3>Data Science with Python</h3>
+                    <p>Learn to analyze and visualize data using Python's powerful data science libraries.</p>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 10 hours</span>
+                        <span><i class="far fa-file-alt"></i> 32 lessons</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- React Lessons -->
+            <div class="lesson-card" data-tech="react">
+                <div class="lesson-icon react">
+                    <i class="fab fa-react"></i>
+                </div>
+                <div class="lesson-content">
+                    <span class="lesson-level intermediate">Intermediate</span>
+                    <h3>React Fundamentals</h3>
+                    <p>Build modern user interfaces with React, learning components, state management, and hooks.</p>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 9 hours</span>
+                        <span><i class="far fa-file-alt"></i> 30 lessons</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-card" data-tech="react">
+                <div class="lesson-icon react">
+                    <i class="fab fa-react"></i>
+                </div>
+                <div class="lesson-content">
+                    <span class="lesson-level advanced">Advanced</span>
+                    <h3>React with Redux</h3>
+                    <p>Master state management in large React applications using Redux and middleware.</p>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 7 hours</span>
+                        <span><i class="far fa-file-alt"></i> 25 lessons</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node.js Lessons -->
+            <div class="lesson-card" data-tech="node">
+                <div class="lesson-icon node">
+                    <i class="fab fa-node-js"></i>
+                </div>
+                <div class="lesson-content">
+                    <span class="lesson-level intermediate">Intermediate</span>
+                    <h3>Node.js Backend Development</h3>
+                    <p>Build server-side applications with Node.js, Express, and MongoDB.</p>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> 11 hours</span>
+                        <span><i class="far fa-file-alt"></i> 35 lessons</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CodeLearn</h3>
+                    <p>The most effective platform to learn coding skills and launch your tech career.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Learning Paths</h3>
+                    <ul>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Data Science</a></li>
+                        <li><a href="#">Mobile Development</a></li>
+                        <li><a href="#">Game Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Cheat Sheets</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CodeLearn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const lessonCards = document.querySelectorAll('.lesson-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    
+                    lessonCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-tech') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Add hover effect to lesson cards
+            lessonCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px)';
+                    card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.1)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                    card.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
