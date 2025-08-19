@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Learning Center</title>
+    <title>Complete JavaScript Mastery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -105,6 +105,11 @@
             margin: 25px 0 15px;
         }
         
+        h4 {
+            color: #2c3e50;
+            margin: 20px 0 10px;
+        }
+        
         p {
             margin-bottom: 20px;
         }
@@ -137,6 +142,10 @@
             color: #75715e;
         }
         
+        .number {
+            color: #ae81ff;
+        }
+        
         /* Examples */
         .example {
             background: #fcf8e3;
@@ -153,6 +162,14 @@
             border-radius: 8px;
             margin: 20px 0;
             border-left: 4px solid #3498db;
+        }
+        
+        .warning {
+            background: #fdedec;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #e74c3c;
         }
         
         /* Interactive Demo */
@@ -377,6 +394,44 @@
         .quiz-option {
             margin-bottom: 10px;
         }
+        
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* Definition Lists */
+        dl {
+            margin: 20px 0;
+        }
+        
+        dt {
+            font-weight: bold;
+            margin-top: 15px;
+            color: #2c3e50;
+        }
+        
+        dd {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -386,8 +441,8 @@
             <div class="logo">
                 <i class="fab fa-js-square"></i>
             </div>
-            <h1>JavaScript Learning Center</h1>
-            <p class="subtitle">Learn the language of the web - from basics to advanced concepts</p>
+            <h1>Complete JavaScript Mastery</h1>
+            <p class="subtitle">Master JavaScript from fundamentals to advanced concepts</p>
         </div>
     </header>
 
@@ -405,108 +460,403 @@
     </nav>
 
     <div class="container">
-        <!-- Progress Bar -->
-        <div class="progress-container">
-            <div class="progress-bar"></div>
-        </div>
-
         <!-- JavaScript Basics Section -->
         <section id="basics" class="content-section">
             <h2>JavaScript Basics</h2>
-            <p>JavaScript is a powerful programming language that can add interactivity to a website. It was invented by Brendan Eich in 1995 and has become one of the core technologies of the web.</p>
+            <p>JavaScript is a versatile programming language primarily used for web development. It's an implementation of the ECMAScript specification and is supported by all modern browsers.</p>
             
-            <h3>What is JavaScript?</h3>
-            <p>JavaScript is a scripting language that enables you to create dynamically updating content, control multimedia, animate images, and much more. While HTML and CSS are languages that give structure and style to web pages, JavaScript gives web pages interactive elements that engage a user.</p>
+            <h3>History and Evolution</h3>
+            <p>JavaScript was created by Brendan Eich in 1995 while working at Netscape. It was originally named Mocha, then LiveScript, before finally being renamed JavaScript. Despite the name similarity, JavaScript is not related to Java.</p>
             
-            <div class="note">
-                <strong>Note:</strong> JavaScript is not the same as Java. They are two different programming languages with different purposes and capabilities.
-            </div>
+            <p>Key milestones in JavaScript's evolution:</p>
+            <ul>
+                <li><strong>1995:</strong> JavaScript created at Netscape</li>
+                <li><strong>1997:</strong> ECMAScript 1 released as first standardized version</li>
+                <li><strong>2009:</strong> ECMAScript 5 (ES5) released with significant improvements</li>
+                <li><strong>2015:</strong> ECMAScript 2015 (ES6) released with major new features</li>
+                <li><strong>2015+:</strong> Yearly ECMAScript updates with incremental improvements</li>
+            </ul>
             
             <h3>Variables and Data Types</h3>
-            <p>Variables are used to store information that can be referenced and manipulated in a program. JavaScript has three ways to declare variables: var, let, and const.</p>
+            <p>JavaScript is a dynamically typed language, meaning variables can hold values of any type without specifying the type explicitly.</p>
             
+            <h4>Variable Declaration</h4>
             <div class="code-block">
-<span class="comment">// Variable declarations</span>
-<span class="keyword">var</span> name = <span class="string">"John"</span>;      <span class="comment">// Function-scoped variable</span>
-<span class="keyword">let</span> age = 30;           <span class="comment">// Block-scoped variable</span>
-<span class="keyword">const</span> PI = 3.14;        <span class="comment">// Constant value (cannot be reassigned)</span>
+<span class="comment">// var (function-scoped, hoisted)</span>
+<span class="keyword">var</span> name = <span class="string">"John"</span>;
 
-<span class="comment">// Data types</span>
-<span class="keyword">let</span> message = <span class="string">"Hello"</span>;        <span class="comment">// String</span>
-<span class="keyword">let</span> score = 100;             <span class="comment">// Number</span>
-<span class="keyword">let</span> isActive = <span class="keyword">true</span>;        <span class="comment">// Boolean</span>
-<span class="keyword">let</span> person = <span class="keyword">null</span>;          <span class="comment">// Null</span>
-<span class="keyword">let</span> data;                   <span class="comment">// Undefined</span>
-<span class="keyword">let</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>]; <span class="comment">// Array</span>
-<span class="keyword">let</span> user = {                 <span class="comment">// Object</span>
-  name: <span class="string">"Alice"</span>,
-  age: 25
-};
+<span class="comment">// let (block-scoped, not hoisted)</span>
+<span class="keyword">let</span> age = 30;
+
+<span class="comment">// const (block-scoped, constant reference)</span>
+<span class="keyword">const</span> PI = 3.14159;
+            </div>
+            
+            <h4>Data Types</h4>
+            <p>JavaScript has 7 primitive data types and objects:</p>
+            
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>String</td>
+                    <td>Textual data</td>
+                    <td>"Hello", 'World', `Template`</td>
+                </tr>
+                <tr>
+                    <td>Number</td>
+                    <td>Numeric data (integer or floating-point)</td>
+                    <td>42, 3.14, NaN, Infinity</td>
+                </tr>
+                <tr>
+                    <td>Boolean</td>
+                    <td>Logical true/false values</td>
+                    <td>true, false</td>
+                </tr>
+                <tr>
+                    <td>Null</td>
+                    <td>Intentional absence of value</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td>Undefined</td>
+                    <td>Variable declared but not assigned</td>
+                    <td>undefined</td>
+                </tr>
+                <tr>
+                    <td>Symbol</td>
+                    <td>Unique and immutable primitive value</td>
+                    <td>Symbol('id')</td>
+                </tr>
+                <tr>
+                    <td>BigInt</td>
+                    <td>Arbitrary precision integers</td>
+                    <td>12345678901234567890n</td>
+                </tr>
+                <tr>
+                    <td>Object</td>
+                    <td>Collection of key-value pairs</td>
+                    <td>{name: "John"}, [1, 2, 3]</td>
+                </tr>
+            </table>
+            
+            <div class="note">
+                <strong>Note:</strong> Use <code>typeof</code> operator to check a value's type, but note that <code>typeof null</code> returns "object" (a historical bug).
             </div>
             
             <h3>Operators</h3>
-            <p>JavaScript includes operators that perform operations on variables and values.</p>
+            <p>JavaScript includes various operators for performing operations on values.</p>
             
+            <h4>Arithmetic Operators</h4>
             <div class="code-block">
-<span class="comment">// Arithmetic operators</span>
-<span class="keyword">let</span> x = 10 + 5;    <span class="comment">// Addition</span>
-<span class="keyword">let</span> y = 10 - 5;    <span class="comment">// Subtraction</span>
-<span class="keyword">let</span> z = 10 * 5;    <span class="comment">// Multiplication</span>
-<span class="keyword">let</span> w = 10 / 5;    <span class="comment">// Division</span>
-<span class="keyword">let</span> remainder = 10 % 3; <span class="comment">// Modulus (remainder)</span>
+<span class="keyword">let</span> x = 10 + 5;  <span class="comment">// Addition: 15</span>
+<span class="keyword">let</span> y = 10 - 5;  <span class="comment">// Subtraction: 5</span>
+<span class="keyword">let</span> z = 10 * 5;  <span class="comment">// Multiplication: 50</span>
+<span class="keyword">let</span> w = 10 / 5;  <span class="comment">// Division: 2</span>
+<span class="keyword">let</span> r = 10 % 3;  <span class="comment">// Remainder: 1</span>
+<span class="keyword">let</span> e = 2 ** 3;  <span class="comment">// Exponentiation: 8</span>
+            </div>
+            
+            <h4>Comparison Operators</h4>
+            <div class="code-block">
+<span class="keyword">let</span> a = 5 == "5";    <span class="comment">// true (loose equality)</span>
+<span class="keyword">let</span> b = 5 === "5";   <span class="comment">// false (strict equality)</span>
+<span class="keyword">let</span> c = 5 != "5";    <span class="comment">// false (loose inequality)</span>
+<span class="keyword">let</span> d = 5 !== "5";   <span class="comment">// true (strict inequality)</span>
+<span class="keyword">let</span> e = 10 > 5;      <span class="comment">// true</span>
+<span class="keyword">let</span> f = 10 <= 5;     <span class="comment">// false</span>
+            </div>
+            
+            <h4>Logical Operators</h4>
+            <div class="code-block">
+<span class="keyword">let</span> a = true && false;  <span class="comment">// false (AND)</span>
+<span class="keyword">let</span> b = true || false;  <span class="comment">// true (OR)</span>
+<span class="keyword">let</span> c = !true;          <span class="comment">// false (NOT)</span>
 
-<span class="comment">// Comparison operators</span>
-<span class="keyword">let</span> isEqual = (5 == <span class="string">"5"</span>);   <span class="comment">// true (loose equality)</span>
-<span class="keyword">let</span> isStrictEqual = (5 === <span class="string">"5"</span>); <span class="comment">// false (strict equality)</span>
-<span class="keyword">let</span> isGreater = (10 > 5);  <span class="comment">// true</span>
-<span class="keyword">let</span> isLess = (10 < 5);     <span class="comment">// false</span>
-
-<span class="comment">// Logical operators</span>
-<span class="keyword">let</span> andResult = (true && false); <span class="comment">// false</span>
-<span class="keyword">let</span> orResult = (true || false);  <span class="comment">// true</span>
-<span class="keyword">let</span> notResult = !true;          <span class="comment">// false</span>
+<span class="comment">// Short-circuit evaluation</span>
+<span class="keyword">let</span> name = username || <span class="string">"Guest"</span>;  <span class="comment">// Uses "Guest" if username is falsy</span>
             </div>
             
             <h3>Control Flow</h3>
-            <p>Control flow statements allow you to control the execution of your code based on conditions.</p>
+            <p>Control the execution flow of your program with conditional statements and loops.</p>
             
+            <h4>Conditional Statements</h4>
             <div class="code-block">
-<span class="comment">// If statement</span>
-<span class="keyword">let</span> temperature = 25;
-
-<span class="keyword">if</span> (temperature > 30) {
-  console.log(<span class="string">"It's hot outside"</span>);
-} <span class="keyword">else if</span> (temperature > 20) {
-  console.log(<span class="string">"It's warm outside"</span>);
+<span class="comment">// if-else statement</span>
+<span class="keyword">if</span> (age >= 18) {
+  console.log(<span class="string">"You are an adult"</span>);
+} <span class="keyword">else if</span> (age >= 13) {
+  console.log(<span class="string">"You are a teenager"</span>);
 } <span class="keyword">else</span> {
-  console.log(<span class="string">"It's cold outside"</span>);
+  console.log(<span class="string">"You are a child"</span>);
 }
 
-<span class="comment">// Switch statement</span>
-<span class="keyword">let</span> day = <span class="string">"Monday"</span>;
+<span class="comment">// Ternary operator</span>
+<span class="keyword">let</span> message = (age >= 18) ? <span class="string">"Adult"</span> : <span class="string">"Minor"</span>;
 
-<span class="keyword">switch</span>(day) {
-  <span class="keyword">case</span> <span class="string">"Monday"</span>:
-    console.log(<span class="string">"Start of the work week"</span>);
+<span class="comment">// switch statement</span>
+<span class="keyword">switch</span>(dayOfWeek) {
+  <span class="keyword">case</span> 0:
+    console.log(<span class="string">"Sunday"</span>);
     <span class="keyword">break</span>;
-  <span class="keyword">case</span> <span class="string">"Friday"</span>:
-    console.log(<span class="string">"End of the work week"</span>);
+  <span class="keyword">case</span> 1:
+    console.log(<span class="string">"Monday"</span>);
     <span class="keyword">break</span>;
   <span class="keyword">default</span>:
-    console.log(<span class="string">"It's a regular day"</span>);
+    console.log(<span class="string">"Other day"</span>);
 }
-
-<span class="comment">// For loop</span>
+            </div>
+            
+            <h4>Loops</h4>
+            <div class="code-block">
+<span class="comment">// for loop</span>
 <span class="keyword">for</span> (<span class="keyword">let</span> i = 0; i < 5; i++) {
-  console.log(<span class="string">"Iteration number: "</span> + i);
+  console.log(i);
 }
 
-<span class="comment">// While loop</span>
-<span class="keyword">let</span> count = 0;
-<span class="keyword">while</span> (count < 3) {
-  console.log(<span class="string">"Count: "</span> + count);
-  count++;
+<span class="comment">// while loop</span>
+<span class="keyword">let</span> i = 0;
+<span class="keyword">while</span> (i < 5) {
+  console.log(i);
+  i++;
 }
+
+<span class="comment">// do-while loop</span>
+<span class="keyword">let</span> j = 0;
+<span class="keyword">do</span> {
+  console.log(j);
+  j++;
+} <span class="keyword">while</span> (j < 5);
+
+<span class="comment">// for...of loop (for iterables)</span>
+<span class="keyword">let</span> fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>];
+<span class="keyword">for</span> (<span class="keyword">let</span> fruit <span class="keyword">of</span> fruits) {
+  console.log(fruit);
+}
+
+<span class="comment">// for...in loop (for object properties)</span>
+<span class="keyword">let</span> person = {name: <span class="string">"John"</span>, age: 30};
+<span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> person) {
+  console.log(key + <span class="string">": "</span> + person[key]);
+}
+            </div>
+        </section>
+
+        <!-- DOM Manipulation Section -->
+        <section id="dom" class="content-section">
+            <h2>DOM Manipulation</h2>
+            <p>The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page structure as a tree of objects that can be manipulated with JavaScript.</p>
+            
+            <h3>DOM Tree Structure</h3>
+            <p>The DOM represents an HTML document as a tree structure where each node is an object representing a part of the document:</p>
+            
+            <div class="code-block">
+<span class="comment">// HTML structure</span>
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Welcome&lt;/h1&gt;
+    &lt;p&gt;Content here&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+            </div>
+            
+            <p>This would be represented as a tree with the document as the root, containing html node, which has head and body children, and so on.</p>
+            
+            <h3>Selecting Elements</h3>
+            <p>JavaScript provides multiple ways to select DOM elements:</p>
+            
+            <div class="code-block">
+<span class="comment">// Select by ID (returns single element)</span>
+<span class="keyword">let</span> header = document.getElementById(<span class="string">"header"</span>);
+
+<span class="comment">// Select by class name (returns HTMLCollection)</span>
+<span class="keyword">let</span> items = document.getElementsByClassName(<span class="string">"item"</span>);
+
+<span class="comment">// Select by tag name (returns HTMLCollection)</span>
+<span class="keyword">let</span> paragraphs = document.getElementsByTagName(<span class="string">"p"</span>);
+
+<span class="comment">// Query selector (returns first matching element)</span>
+<span class="keyword">let</span> element = document.querySelector(<span class="string">".className"</span>);
+
+<span class="comment">// Query selector all (returns NodeList)</span>
+<span class="keyword">let</span> elements = document.querySelectorAll(<span class="string">"div.item"</span>);
+            </div>
+            
+            <div class="note">
+                <strong>Note:</strong> <code>querySelector</code> and <code>querySelectorAll</code> use CSS selector syntax, making them very powerful for complex selections.
+            </div>
+            
+            <h3>Modifying Elements</h3>
+            <p>Once you've selected elements, you can modify their content, attributes, and styles.</p>
+            
+            <h4>Content Manipulation</h4>
+            <div class="code-block">
+<span class="comment">// Change HTML content</span>
+element.innerHTML = <span class="string">"&lt;strong&gt;New content&lt;/strong&gt;"</span>;
+
+<span class="comment">// Change text content (safer against XSS attacks)</span>
+element.textContent = <span class="string">"New text content"</span>;
+
+<span class="comment">// Get content</span>
+<span class="keyword">let</span> content = element.innerHTML;
+<span class="keyword">let</span> text = element.textContent;
+            </div>
+            
+            <h4>Attribute Manipulation</h4>
+            <div class="code-block">
+<span class="comment">// Set attributes</span>
+element.setAttribute(<span class="string">"src"</span>, <span class="string">"image.jpg"</span>);
+element.id = <span class="string">"newId"</span>;
+element.className = <span class="string">"new-class"</span>; <span class="comment">// Replaces all classes</span>
+
+<span class="comment">// Modern class manipulation</span>
+element.classList.add(<span class="string">"new-class"</span>);
+element.classList.remove(<span class="string">"old-class"</span>);
+element.classList.toggle(<span class="string">"active"</span>);
+element.classList.contains(<span class="string">"some-class"</span>);
+
+<span class="comment">// Get attributes</span>
+<span class="keyword">let</span> src = element.getAttribute(<span class="string">"src"</span>);
+<span class="keyword">let</span> id = element.id;
+            </div>
+            
+            <h4>Style Manipulation</h4>
+            <div class="code-block">
+<span class="comment">// Inline styles</span>
+element.style.color = <span class="string">"blue"</span>;
+element.style.fontSize = <span class="string">"20px"</span>;
+element.style.display = <span class="string">"none"</span>; <span class="comment">// Hide element</span>
+
+<span class="comment">// Get computed styles</span>
+<span class="keyword">let</span> styles = window.getComputedStyle(element);
+<span class="keyword">let</span> color = styles.color;
+            </div>
+            
+            <div class="warning">
+                <strong>Warning:</strong> Using inline styles with the style property can lead to specificity issues. Prefer adding/removing CSS classes when possible.
+            </div>
+            
+            <h3>Creating and Removing Elements</h3>
+            <p>You can dynamically create new elements and add them to the DOM, or remove existing elements.</p>
+            
+            <div class="code-block">
+<span class="comment">// Create new element</span>
+<span class="keyword">let</span> newDiv = document.createElement(<span class="string">"div"</span>);
+newDiv.textContent = <span class="string">"New element"</span>;
+newDiv.className = <span class="string">"box"</span>;
+
+<span class="comment">// Add to DOM</span>
+document.body.appendChild(newDiv);
+parentElement.insertBefore(newDiv, referenceElement);
+
+<span class="comment">// Clone existing element</span>
+<span class="keyword">let</span> clonedElement = existingElement.cloneNode(<span class="keyword">true</span>);
+
+<span class="comment">// Remove element</span>
+element.remove();
+parentElement.removeChild(element);
+            </div>
+            
+            <h3>Event Handling</h3>
+            <p>JavaScript can respond to user interactions and browser events through event handlers.</p>
+            
+            <h4>Event Listeners</h4>
+            <div class="code-block">
+<span class="comment">// Add event listener</span>
+element.addEventListener(<span class="string">"click"</span>, <span class="keyword">function</span>(event) {
+  console.log(<span class="string">"Element clicked!"</span>);
+});
+
+<span class="comment">// Remove event listener (requires named function)</span>
+<span class="keyword">function</span> <span class="function">handleClick</span>(event) {
+  console.log(<span class="string">"Clicked"</span>);
+}
+element.addEventListener(<span class="string">"click"</span>, handleClick);
+element.removeEventListener(<span class="string">"click"</span>, handleClick);
+            </div>
+            
+            <h4>Common Events</h4>
+            <table>
+                <tr>
+                    <th>Event Type</th>
+                    <th>Examples</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Mouse Events</td>
+                    <td>click, dblclick, mousedown, mouseup, mousemove, mouseover, mouseout</td>
+                    <td>User interactions with mouse</td>
+                </tr>
+                <tr>
+                    <td>Keyboard Events</td>
+                    <td>keydown, keyup, keypress</td>
+                    <td>User interactions with keyboard</td>
+                </tr>
+                <tr>
+                    <td>Form Events</td>
+                    <td>submit, change, input, focus, blur</td>
+                    <td>Interactions with form elements</td>
+                </tr>
+                <tr>
+                    <td>Window Events</td>
+                    <td>load, resize, scroll, hashchange</td>
+                    <td>Browser window events</td>
+                </tr>
+                <tr>
+                    <td>Touch Events</td>
+                    <td>touchstart, touchmove, touchend</td>
+                    <td>Touch screen interactions</td>
+                </tr>
+            </table>
+            
+            <h4>Event Object</h4>
+            <p>When an event occurs, the browser creates an event object containing information about the event.</p>
+            
+            <div class="code-block">
+<span class="keyword">function</span> <span class="function">handleEvent</span>(event) {
+  <span class="comment">// Event properties</span>
+  console.log(event.type);        <span class="comment">// Event type (e.g., "click")</span>
+  console.log(event.target);      <span class="comment">// Element that triggered the event</span>
+  console.log(event.currentTarget); <span class="comment">// Element with the event listener</span>
+  
+  <span class="comment">// Mouse event properties</span>
+  console.log(event.clientX, event.clientY); <span class="comment">// Mouse coordinates</span>
+  console.log(event.button);      <span class="comment">// Mouse button pressed</span>
+  
+  <span class="comment">// Keyboard event properties</span>
+  console.log(event.key);         <span class="comment">// Key pressed</span>
+  console.log(event.code);        <span class="comment">// Physical key code</span>
+  
+  <span class="comment">// Event methods</span>
+  event.preventDefault();         <span class="comment">// Prevent default behavior</span>
+  event.stopPropagation();        <span class="comment">// Stop event bubbling</span>
+}
+            </div>
+            
+            <h4>Event Delegation</h4>
+            <p>Event delegation allows you to attach a single event listener to a parent element that will fire for all descendants matching a selector, even those added dynamically.</p>
+            
+            <div class="code-block">
+<span class="comment">// Instead of adding listeners to each item</span>
+<span class="keyword">let</span> items = document.querySelectorAll(<span class="string">".item"</span>);
+items.forEach(<span class="function"><span class="keyword">function</span></span>(item) {
+  item.addEventListener(<span class="string">"click"</span>, handleClick);
+});
+
+<span class="comment">// Use event delegation on parent</span>
+<span class="keyword">let</span> list = document.getElementById(<span class="string">"myList"</span>);
+list.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span></span>(event) {
+  <span class="keyword">if</span> (event.target.classList.contains(<span class="string">"item"</span>)) {
+    <span class="comment">// Handle click on .item element</span>
+    console.log(<span class="string">"Item clicked: "</span> + event.target.textContent);
+  }
+});
             </div>
         </section>
 
@@ -520,22 +870,43 @@
 // Welcome to the JavaScript editor!
 // Try changing the code below and click "Run Code"
 
-let name = "JavaScript Learner";
-let message = `Hello, ${name}! Welcome to the interactive editor.`;
+// DOM manipulation example
+const output = document.getElementById("output");
+output.innerHTML = ""; // Clear previous output
 
-// Create a list of items
-let items = ["Variables", "Functions", "Objects", "Arrays"];
-let listHTML = "<ul>";
+// Create and style elements
+const title = document.createElement("h3");
+title.textContent = "DOM Manipulation Example";
+title.style.color = "#f0db4f";
 
-for (let i = 0; i < items.length; i++) {
-  listHTML += `<li>${items[i]}</li>`;
-}
+const list = document.createElement("ul");
+["Create elements", "Modify styles", "Handle events", "Traverse DOM"].forEach(item => {
+  const li = document.createElement("li");
+  li.textContent = item;
+  li.style.margin = "8px 0";
+  list.appendChild(li);
+});
 
-listHTML += "</ul>";
+// Add to output
+output.appendChild(title);
+output.appendChild(list);
 
-// Display the output
-document.getElementById("output").innerHTML = 
-  `<h3>${message}</h3><p>Today we're learning about:</p>${listHTML}`;
+// Add interactive button
+const button = document.createElement("button");
+button.textContent = "Click Me!";
+button.style.background = "#f0db4f";
+button.style.color = "#323330";
+button.style.border = "none";
+button.style.padding = "10px 15px";
+button.style.borderRadius = "4px";
+button.style.marginTop = "15px";
+button.style.cursor = "pointer";
+
+button.addEventListener("click", () => {
+  alert("Button clicked! DOM manipulation is working!");
+});
+
+output.appendChild(button);
                 </div>
                 <div class="preview" id="js-preview">
                     <div id="output"></div>
@@ -548,216 +919,665 @@ document.getElementById("output").innerHTML =
             </div>
         </section>
 
-        <!-- DOM Manipulation Section -->
-        <section id="dom" class="content-section">
-            <h2>DOM Manipulation</h2>
-            <p>The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page structure so that programs can change the document structure, style, and content.</p>
-            
-            <h3>Selecting Elements</h3>
-            <p>JavaScript provides several ways to select elements from the DOM.</p>
-            
-            <div class="code-block">
-<span class="comment">// Select elements by ID</span>
-<span class="keyword">let</span> header = document.getElementById(<span class="string">"header"</span>);
-
-<span class="comment">// Select elements by class name</span>
-<span class="keyword">let</span> items = document.getElementsByClassName(<span class="string">"item"</span>);
-
-<span class="comment">// Select elements by tag name</span>
-<span class="keyword">let</span> paragraphs = document.getElementsByTagName(<span class="string">"p"</span>);
-
-<span class="comment">// Modern selector methods (CSS selectors)</span>
-<span class="keyword">let</span> element = document.querySelector(<span class="string">".className"</span>); <span class="comment">// Returns first match</span>
-<span class="keyword">let</span> elements = document.querySelectorAll(<span class="string">"div.item"</span>); <span class="comment">// Returns all matches</span>
-            </div>
-            
-            <h3>Modifying Elements</h3>
-            <p>Once you've selected elements, you can modify their content, attributes, and styles.</p>
-            
-            <div class="code-block">
-<span class="comment">// Changing content</span>
-element.innerHTML = <span class="string">"New HTML content"</span>;
-element.textContent = <span class="string">"New text content"</span>;
-
-<span class="comment">// Changing attributes</span>
-element.setAttribute(<span class="string">"src"</span>, <span class="string">"image.jpg"</span>);
-element.id = <span class="string">"newId"</span>;
-
-<span class="comment">// Changing styles</span>
-element.style.color = <span class="string">"blue"</span>;
-element.style.fontSize = <span class="string">"20px"</span>;
-element.style.display = <span class="string">"none"</span>; <span class="comment">// Hide element</span>
-element.style.display = <span class="string">"block"</span>; <span class="comment">// Show element</span>
-
-<span class="comment">// Adding and removing classes</span>
-element.classList.add(<span class="string">"new-class"</span>);
-element.classList.remove(<span class="string">"old-class"</span>);
-element.classList.toggle(<span class="string">"active"</span>); <span class="comment">// Toggle class</span>
-            </div>
-            
-            <h3>Event Handling</h3>
-            <p>JavaScript can respond to user interactions through event handlers.</p>
-            
-            <div class="code-block">
-<span class="comment">// Adding event listeners</span>
-element.addEventListener(<span class="string">"click"</span>, <span class="keyword">function</span>(event) {
-  console.log(<span class="string">"Element clicked!"</span>);
-});
-
-<span class="comment">// Common events</span>
-element.addEventListener(<span class="string">"click"</span>, handleClick);
-element.addEventListener(<span class="string">"mouseover"</span>, handleMouseOver);
-element.addEventListener(<span class="string">"mouseout"</span>, handleMouseOut);
-element.addEventListener(<span class="string">"keydown"</span>, handleKeyDown);
-element.addEventListener(<span class="string">"submit"</span>, handleSubmit);
-
-<span class="comment">// Event object properties</span>
-<span class="keyword">function</span> <span class="function">handleClick</span>(event) {
-  console.log(event.target); <span class="comment">// The element that was clicked</span>
-  console.log(event.clientX, event.clientY); <span class="comment">// Mouse position</span>
-  event.preventDefault(); <span class="comment">// Prevent default behavior</span>
-  event.stopPropagation(); <span class="comment">// Stop event bubbling</span>
-}
-            </div>
-            
-            <div class="example">
-                <h4>DOM Manipulation Example</h4>
-                <p>Try this interactive example:</p>
-                <button class="button js" onclick="changeText()">Change Text</button>
-                <button class="button js" onclick="changeColor()">Change Color</button>
-                <button class="button js" onclick="addItem()">Add Item</button>
-                <button class="button" onclick="resetExample()">Reset</button>
-                
-                <div id="demo-element" style="padding: 20px; margin: 20px 0; border: 1px solid #ddd; border-radius: 5px;">
-                    <h4>Original Content</h4>
-                    <p>This is a demonstration of DOM manipulation.</p>
-                    <ul>
-                        <li>Initial item 1</li>
-                        <li>Initial item 2</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
         <!-- Lesson Navigation -->
         <div class="lesson-nav">
             <button class="button" onclick="alert('Previous lesson: HTML Fundamentals')">
                 <i class="fas fa-arrow-left"></i> Previous Lesson
             </button>
-            <button class="button js" onclick="alert('Next lesson: Functions')">
-                Next Lesson: Functions <i class="fas fa-arrow-right"></i>
+            <button class="button js" onclick="scrollToSection('functions')">
+                Next: Functions <i class="fas fa-arrow-right"></i>
             </button>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>JavaScript Learning Center</h3>
-                    <p>A comprehensive resource for learning JavaScript, from basics to advanced concepts.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Lesson Topics</h3>
-                    <ul>
-                        <li><a href="#basics">JavaScript Basics</a></li>
-                        <li><a href="#dom">DOM Manipulation</a></li>
-                        <li><a href="#functions">Functions</a></li>
-                        <li><a href="#objects">Objects & Arrays</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">JavaScript Cheat Sheet</a></li>
-                        <li><a href="#">Practice Exercises</a></li>
-                        <li><a href="#">Code Challenges</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 JavaScript Learning Center. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Interactive editor functionality
-        function runCode() {
-            const code = document.getElementById('js-editor').innerText;
-            try {
-                // Using eval for simplicity in this demo
-                // Note: In production, be cautious with eval due to security implications
-                eval(code);
-            } catch (error) {
-                document.getElementById("output").innerHTML = 
-                    `<div style="color: red;">Error: ${error.message}</div>`;
-            }
-        }
-        
-        function resetEditor() {
-            document.getElementById('js-editor').innerText = `// Welcome to the JavaScript editor!
-// Try changing the code below and click "Run Code"
-
-let name = "JavaScript Learner";
-let message = \`Hello, \${name}! Welcome to the interactive editor.\`;
-
-// Create a list of items
-let items = ["Variables", "Functions", "Objects", "Arrays"];
-let listHTML = "<ul>";
-
-for (let i = 0; i < items.length; i++) {
-  listHTML += \`<li>\${items[i]}</li>\`;
+        <!-- Functions Section -->
+        <section id="functions" class="content-section">
+            <h2>Functions</h2>
+            <p>Functions are one of the fundamental building blocks in JavaScript. They are procedures that perform tasks or calculate values.</p>
+            
+            <h3>Function Declarations</h3>
+            <p>There are several ways to define functions in JavaScript:</p>
+            
+            <h4>Function Declaration</h4>
+            <div class="code-block">
+<span class="comment">// Function declaration (hoisted)</span>
+<span class="keyword">function</span> <span class="function">greet</span>(name) {
+  <span class="keyword">return</span> <span class="string">"Hello, "</span> + name;
 }
 
-listHTML += "</ul>";
-
-// Display the output
-document.getElementById("output").innerHTML = 
-  \`<h3>\${message}</h3><p>Today we're learning about:</p>\${listHTML}\`;`;
+<span class="comment">// Function call</span>
+<span class="keyword">let</span> message = greet(<span class="string">"John"</span>);
+            </div>
             
-            document.getElementById("output").innerHTML = "";
-        }
-        
-        // DOM manipulation example functions
-        function changeText() {
-            const demoElement = document.getElementById('demo-element');
-            demoElement.querySelector('h4').textContent = 'Text Changed!';
-            demoElement.querySelector('p').textContent = 'The text content has been modified using JavaScript DOM manipulation.';
-        }
-        
-        function changeColor() {
-            const demoElement = document.getElementById('demo-element');
-            demoElement.style.backgroundColor = '#e8f4fc';
-            demoElement.style.borderColor = '#3498db';
-        }
-        
-        function addItem() {
-            const list = document.querySelector('#demo-element ul');
-            const newItem = document.createElement('li');
-            newItem.textContent = 'New item added: ' + new Date().toLocaleTimeString();
-            list.appendChild(newItem);
-        }
-        
-        function resetExample() {
-            const demoElement = document.getElementById('demo-element');
-            demoElement.innerHTML = `
-                <h4>Original Content</h4>
-                <p>This is a demonstration of DOM manipulation.</p>
-                <ul>
-                    <li>Initial item 1</li>
-                    <li>Initial item 2</li>
-                </ul>
-            `;
-            demoElement.style.backgroundColor = '';
-            demoElement.style.borderColor = '#ddd';
-        }
-        
-        // Initialize the page with some code execution
-        window.onload = function() {
-            runCode();
-        };
-    </script>
+            <h4>Function Expression</h4>
+            <div class="code-block">
+<span class="comment">// Function expression (not hoisted)</span>
+<span class="keyword">const</span> greet = <span class="function"><span class="keyword">function</span></span>(name) {
+  <span class="keyword">return</span> <span class="string">"Hello, "</span> + name;
+};
+
+<span class="comment">// Arrow function expression</span>
+<span class="keyword">const</span> greet = (name) => {
+  <span class="keyword">return</span> <span class="string">"Hello, "</span> + name;
+};
+
+<span class="comment">// Concise arrow function</span>
+<span class="keyword">const</span> greet = name => <span class="string">"Hello, "</span> + name;
+            </div>
+            
+            <h4>Immediately Invoked Function Expression (IIFE)</h4>
+            <div class="code-block">
+<span class="comment">// IIFE - runs immediately after definition</span>
+(<span class="function"><span class="keyword">function</span></span>() {
+  console.log(<span class="string">"This runs immediately"</span>);
+})();
+
+<span class="comment">// IIFE with parameters</span>
+(<span class="function"><span class="keyword">function</span></span>(x, y) {
+  console.log(x + y);
+})(5, 10);
+            </div>
+            
+            <h3>Function Parameters</h3>
+            <p>JavaScript functions can accept parameters in flexible ways:</p>
+            
+            <div class="code-block">
+<span class="comment">// Default parameters</span>
+<span class="keyword">function</span> <span class="function">greet</span>(name = <span class="string">"Guest"</span>) {
+  <span class="keyword">return</span> <span class="string">"Hello, "</span> + name;
+}
+
+<span class="comment">// Rest parameters</span>
+<span class="keyword">function</span> <span class="function">sum</span>(...numbers) {
+  <span class="keyword">return</span> numbers.reduce((total, num) => total + num, 0);
+}
+console.log(sum(1, 2, 3, 4)); <span class="comment">// 10</span>
+
+<span class="comment">// Destructuring parameters</span>
+<span class="keyword">function</span> <span class="function">displayPerson</span>({name, age}) {
+  console.log(<span class="string">`<span class="number">${</span>name<span class="number">}</span> is <span class="number">${</span>age<span class="number">}</span> years old`</span>);
+}
+displayPerson({name: <span class="string">"John"</span>, age: 30});
+            </div>
+            
+            <h3>Return Values</h3>
+            <p>Functions can return values using the return statement. If no return is specified, the function returns undefined.</p>
+            
+            <div class="code-block">
+<span class="comment">// Returning a value</span>
+<span class="keyword">function</span> <span class="function">multiply</span>(a, b) {
+  <span class="keyword">return</span> a * b;
+}
+
+<span class="comment">// Returning multiple values (via array or object)</span>
+<span class="keyword">function</span> <span class="function">getCoordinates</span>() {
+  <span class="keyword">return</span> {x: 10, y: 20};
+}
+
+<span class="comment">// Early return</span>
+<span class="keyword">function</span> <span class="function">isAdult</span>(age) {
+  <span class="keyword">if</span> (age < 0) {
+    <span class="keyword">return</span> <span class="string">"Invalid age"</span>;
+  }
+  <span class="keyword">return</span> age >= 18;
+}
+            </div>
+            
+            <h3>Scope and Closures</h3>
+            <p>JavaScript has function scope, and functions can form closures by remembering their lexical environment.</p>
+            
+            <h4>Function Scope</h4>
+            <div class="code-block">
+<span class="keyword">let</span> globalVar = <span class="string">"I'm global"</span>;
+
+<span class="keyword">function</span> <span class="function">example</span>() {
+  <span class="keyword">let</span> localVar = <span class="string">"I'm local"</span>;
+  console.log(globalVar); <span class="comment">// Accessible</span>
+  console.log(localVar);  <span class="comment">// Accessible</span>
+}
+
+example();
+console.log(globalVar); <span class="comment">// Accessible</span>
+console.log(localVar);  <span class="comment">// Error: localVar is not defined</span>
+            </div>
+            
+            <h4>Closures</h4>
+            <div class="code-block">
+<span class="keyword">function</span> <span class="function">createCounter</span>() {
+  <span class="keyword">let</span> count = 0;
+  
+  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span></span>() {
+    count++;
+    <span class="keyword">return</span> count;
+  };
+}
+
+<span class="keyword">const</span> counter = createCounter();
+console.log(counter()); <span class="comment">// 1</span>
+console.log(counter()); <span class="comment">// 2</span>
+console.log(counter()); <span class="comment">// 3</span>
+            </div>
+            
+            <h3>Higher-Order Functions</h3>
+            <p>Functions that operate on other functions, either by taking them as arguments or returning them.</p>
+            
+            <div class="code-block">
+<span class="comment">// Function as argument</span>
+<span class="keyword">function</span> <span class="function">applyOperation</span>(x, y, operation) {
+  <span class="keyword">return</span> operation(x, y);
+}
+
+<span class="keyword">const</span> result = applyOperation(5, 3, (a, b) => a * b);
+console.log(result); <span class="comment">// 15</span>
+
+<span class="comment">// Function as return value</span>
+<span class="keyword">function</span> <span class="function">multiplyBy</span>(factor) {
+  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span></span>(number) {
+    <span class="keyword">return</span> number * factor;
+  };
+}
+
+<span class="keyword">const</span> double = multiplyBy(2);
+console.log(double(5)); <span class="comment">// 10</span>
+            </div>
+            
+            <h3>Built-in Function Methods</h3>
+            <p>JavaScript provides several methods that can be called on functions.</p>
+            
+            <div class="code-block">
+<span class="keyword">function</span> <span class="function">greet</span>(name, punctuation) {
+  <span class="keyword">return</span> <span class="string">`Hello, <span class="number">${</span>name<span class="number">}</span><span class="number">${</span>punctuation<span class="number">}</span>`</span>;
+}
+
+<span class="comment">// call() - calls function with specified this value and arguments</span>
+console.log(greet.call(<span class="keyword">null</span>, <span class="string">"John"</span>, <span class="string">"!"</span>));
+
+<span class="comment">// apply() - similar to call() but takes arguments as array</span>
+console.log(greet.apply(<span class="keyword">null</span>, [<span class="string">"John"</span>, <span class="string">"!"</span>]));
+
+<span class="comment">// bind() - creates a new function with specified this value and initial arguments</span>
+<span class="keyword">const</span> greetJohn = greet.bind(<span class="keyword">null</span>, <span class="string">"John"</span>);
+console.log(greetJohn(<span class="string">"!"</span>));
+            </div>
+        </section>
+
+        <!-- Objects & Arrays Section -->
+        <section id="objects" class="content-section">
+            <h2>Objects & Arrays</h2>
+            <p>Objects and arrays are complex data types that allow you to store and organize collections of data.</p>
+            
+            <h3>Objects</h3>
+            <p>Objects are collections of key-value pairs where keys are strings (or Symbols) and values can be any data type.</p>
+            
+            <h4>Creating Objects</h4>
+            <div class="code-block">
+<span class="comment">// Object literal (most common)</span>
+<span class="keyword">let</span> person = {
+  name: <span class="string">"John"</span>,
+  age: 30,
+  isStudent: <span class="keyword">false</span>,
+  greet: <span class="function"><span class="keyword">function</span></span>() {
+    console.log(<span class="string">"Hello!"</span>);
+  }
+};
+
+<span class="comment">// Using new Object()</span>
+<span class="keyword">let</span> car = <span class="keyword">new</span> Object();
+car.make = <span class="string">"Toyota"</span>;
+car.model = <span class="string">"Camry"</span>;
+
+<span class="comment">// Using Object.create()</span>
+<span class="keyword">let</span> animal = Object.create(<span class="keyword">null</span>);
+animal.type = <span class="string">"dog"</span>;
+            </div>
+            
+            <h4>Accessing Properties</h4>
+            <div class="code-block">
+<span class="keyword">let</span> person = {name: <span class="string">"John"</span>, age: 30};
+
+<span class="comment">// Dot notation</span>
+console.log(person.name); <span class="comment">// "John"</span>
+
+<span class="comment">// Bracket notation (useful for dynamic property names)</span>
+<span class="keyword">let</span> property = <span class="string">"age"</span>;
+console.log(person[property]); <span class="comment">// 30</span>
+
+<span class="comment">// Accessing non-existent properties returns undefined</span>
+console.log(person.address); <span class="comment">// undefined</span>
+            </div>
+            
+            <h4>Modifying Objects</h4>
+            <div class="code-block">
+<span class="keyword">let</span> person = {name: <span class="string">"John"</span>};
+
+<span class="comment">// Adding properties</span>
+person.age = 30;
+person[<span class="string">"isStudent"</span>] = <span class="keyword">false</span>;
+
+<span class="comment">// Modifying properties</span>
+person.name = <span class="string">"Jane"</span>;
+
+<span class="comment">// Deleting properties</span>
+<span class="keyword">delete</span> person.age;
+
+<span class="comment">// Checking if property exists</span>
+console.log(<span class="string">"name"</span> <span class="keyword">in</span> person); <span class="comment">// true</span>
+console.log(person.hasOwnProperty(<span class="string">"name"</span>)); <span class="comment">// true</span>
+            </div>
+            
+            <h4>Object Methods</h4>
+            <div class="code-block">
+<span class="keyword">let</span> person = {
+  firstName: <span class="string">"John"</span>,
+  lastName: <span class="string">"Doe"</span>,
+  <span class="comment">// Method</span>
+  getFullName: <span class="function"><span class="keyword">function</span></span>() {
+    <span class="keyword">return</span> <span class="string">`<span class="number">${</span>this.firstName<span class="number">}</span> <span class="number">${</span>this.lastName<span class="number">}</span>`</span>;
+  },
+  <span class="comment">// Shorthand method syntax (ES6)</span>
+  greet() {
+    <span class="keyword">return</span> <span class="string">"Hello!"</span>;
+  }
+};
+
+console.log(person.getFullName()); <span class="comment">// "John Doe"</span>
+            </div>
+            
+            <h4>Iterating Over Objects</h4>
+            <div class="code-block">
+<span class="keyword">let</span> person = {name: <span class="string">"John"</span>, age: 30, city: <span class="string">"New York"</span>};
+
+<span class="comment">// for...in loop</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> person) {
+  console.log(key + <span class="string">": "</span> + person[key]);
+}
+
+<span class="comment">// Object.keys()</span>
+<span class="keyword">let</span> keys = Object.keys(person);
+keys.forEach(key => {
+  console.log(key + <span class="string">": "</span> + person[key]);
+});
+
+<span class="comment">// Object.values() (ES2017)</span>
+<span class="keyword">let</span> values = Object.values(person);
+console.log(values); <span class="comment">// ["John", 30, "New York"]</span>
+
+<span class="comment">// Object.entries() (ES2017)</span>
+<span class="keyword">let</span> entries = Object.entries(person);
+entries.forEach(([key, value]) => {
+  console.log(key + <span class="string">": "</span> + value);
+});
+            </div>
+            
+            <h3>Arrays</h3>
+            <p>Arrays are ordered collections of values that can be of any type.</p>
+            
+            <h4>Creating Arrays</h4>
+            <div class="code-block">
+<span class="comment">// Array literal (most common)</span>
+<span class="keyword">let</span> fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>];
+
+<span class="comment">// Using new Array()</span>
+<span class="keyword">let</span> numbers = <span class="keyword">new</span> Array(1, 2, 3);
+
+<span class="comment">// Array with mixed types</span>
+<span class="keyword">let</span> mixed = [<span class="string">"hello"</span>, 42, <span class="keyword">true</span>, {name: <span class="string">"John"</span>}];
+            </div>
+            
+            <h4>Accessing Elements</h4>
+            <div class="code-block">
+<span class="keyword">let</span> fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>];
+
+<span class="comment">// Access by index (0-based)</span>
+console.log(fruits[0]); <span class="comment">// "apple"</span>
+console.log(fruits[2]); <span class="comment">// "cherry"</span>
+
+<span class="comment">// Access length</span>
+console.log(fruits.length); <span class="comment">// 3</span>
+
+<span class="comment">// Access last element</span>
+console.log(fruits[fruits.length - 1]); <span class="comment">// "cherry"</span>
+            </div>
+            
+            <h4>Modifying Arrays</h4>
+            <div class="code-block">
+<span class="keyword">let</span> fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>];
+
+<span class="comment">// Adding elements</span>
+fruits.push(<span class="string">"cherry"</span>); <span class="comment">// End: ["apple", "banana", "cherry"]</span>
+fruits.unshift(<span class="string">"orange"</span>); <span class="comment">// Start: ["orange", "apple", "banana", "cherry"]</span>
+
+<span class="comment">// Removing elements</span>
+fruits.pop(); <span class="comment">// End: ["orange", "apple", "banana"]</span>
+fruits.shift(); <span class="comment">// Start: ["apple", "banana"]</span>
+
+<span class="comment">// Adding/removing at any position</span>
+fruits.splice(1, 0, <span class="string">"mango"</span>); <span class="comment">// Add at index 1: ["apple", "mango", "banana"]</span>
+fruits.splice(1, 1); <span class="comment">// Remove at index 1: ["apple", "banana"]</span>
+
+<span class="comment">// Modifying by index</span>
+fruits[0] = <span class="string">"pear"</span>; <span class="comment">// ["pear", "banana"]</span>
+            </div>
+            
+            <h4>Array Methods</h4>
+            <p>JavaScript provides many useful methods for working with arrays.</p>
+            
+            <div class="code-block">
+<span class="keyword">let</span> numbers = [1, 2, 3, 4, 5];
+
+<span class="comment">// Iteration methods</span>
+numbers.forEach(<span class="function"><span class="keyword">function</span></span>(num) {
+  console.log(num);
+});
+
+<span class="comment">// Transformation methods</span>
+<span class="keyword">let</span> doubled = numbers.map(num => num * 2); <span class="comment">// [2, 4, 6, 8, 10]</span>
+<span class="keyword">let</span> evens = numbers.filter(num => num % 2 === 0); <span class="comment">// [2, 4]</span>
+<span class="keyword">let</span> sum = numbers.reduce((total, num) => total + num, 0); <span class="comment">// 15</span>
+
+<span class="comment">// Search methods</span>
+<span class="keyword">let</span> hasThree = numbers.includes(3); <span class="comment">// true</span>
+<span class="keyword">let</span> index = numbers.indexOf(3); <span class="comment">// 2</span>
+
+<span class="comment">// Other useful methods</span>
+<span class="keyword">let</span> reversed = numbers.reverse(); <span class="comment">// [5, 4, 3, 2, 1]</span>
+<span class="keyword">let</span> sliced = numbers.slice(1, 3); <span class="comment">// [2, 3] (extracts elements)</span>
+<span class="keyword">let</span> sorted = [3, 1, 4, 2].sort(); <span class="comment">// [1, 2, 3, 4]</span>
+            </div>
+            
+            <h4>Multidimensional Arrays</h4>
+            <div class="code-block">
+<span class="comment">// Creating a 2D array (matrix)</span>
+<span class="keyword">let</span> matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+
+<span class="comment">// Accessing elements</span>
+console.log(matrix[0][0]); <span class="comment">// 1</span>
+console.log(matrix[1][2]); <span class="comment">// 6</span>
+
+<span class="comment">// Iterating over 2D array</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = 0; i < matrix.length; i++) {
+  <span class="keyword">for</span> (<span class="keyword">let</span> j = 0; j < matrix[i].length; j++) {
+    console.log(matrix[i][j]);
+  }
+}
+            </div>
+        </section>
+
+        <!-- Advanced Topics Section -->
+        <section id="advanced" class="content-section">
+            <h2>Advanced JavaScript Topics</h2>
+            <p>Once you've mastered the basics, these advanced concepts will help you write more powerful and efficient JavaScript code.</p>
+            
+            <h3>Asynchronous JavaScript</h3>
+            <p>JavaScript uses an event-driven, non-blocking model for handling asynchronous operations.</p>
+            
+            <h4>Callbacks</h4>
+            <div class="code-block">
+<span class="comment">// Traditional callback pattern</span>
+<span class="keyword">function</span> <span class="function">fetchData</span>(callback) {
+  setTimeout(() => {
+    callback(<span class="string">"Data received"</span>);
+  }, 1000);
+}
+
+fetchData(<span class="function"><span class="keyword">function</span></span>(data) {
+  console.log(data);
+});
+            </div>
+            
+            <h4>Promises</h4>
+            <div class="code-block">
+<span class="comment">// Creating a promise</span>
+<span class="keyword">function</span> <span class="function">fetchData</span>() {
+  <span class="keyword">return</span> <span class="keyword">new</span> Promise((resolve, reject) => {
+    setTimeout(() => {
+      <span class="keyword">let</span> success = <span class="keyword">true</span>;
+      <span class="keyword">if</span> (success) {
+        resolve(<span class="string">"Data received"</span>);
+      } <span class="keyword">else</span> {
+        reject(<span class="string">"Error fetching data"</span>);
+      }
+    }, 1000);
+  });
+}
+
+<span class="comment">// Using a promise</span>
+fetchData()
+  .then(data => console.log(data))
+  .catch(error => console.error(error))
+  .finally(() => console.log(<span class="string">"Operation completed"</span>));
+            </div>
+            
+            <h4>Async/Await</h4>
+            <div class="code-block">
+<span class="comment">// Async function (returns a promise)</span>
+<span class="keyword">async</span> <span class="function"><span class="keyword">function</span></span> getData() {
+  <span class="keyword">try</span> {
+    <span class="keyword">let</span> data = <span class="keyword">await</span> fetchData();
+    console.log(data);
+    <span class="keyword">return</span> data;
+  } <span class="keyword">catch</span> (error) {
+    console.error(error);
+    <span class="keyword">throw</span> error;
+  }
+}
+
+getData();
+            </div>
+            
+            <h3>ES6+ Features</h3>
+            <p>Modern JavaScript has introduced many new features that improve code readability and functionality.</p>
+            
+            <h4>Destructuring</h4>
+            <div class="code-block">
+<span class="comment">// Array destructuring</span>
+<span class="keyword">let</span> [a, b, c] = [1, 2, 3];
+console.log(a, b, c); <span class="comment">// 1, 2, 3</span>
+
+<span class="comment">// Object destructuring</span>
+<span class="keyword">let</span> {name, age} = {name: <span class="string">"John"</span>, age: 30};
+console.log(name, age); <span class="comment">// "John", 30</span>
+
+<span class="comment">// Function parameter destructuring</span>
+<span class="keyword">function</span> <span class="function">greet</span>({name, age}) {
+  console.log(<span class="string">`<span class="number">${</span>name<span class="number">}</span> is <span class="number">${</span>age<span class="number">}</span> years old`</span>);
+}
+            </div>
+            
+            <h4>Template Literals</h4>
+            <div class="code-block">
+<span class="keyword">let</span> name = <span class="string">"John"</span>;
+<span class="keyword">let</span> age = 30;
+
+<span class="comment">// String interpolation</span>
+<span class="keyword">let</span> message = <span class="string">`<span class="number">${</span>name<span class="number">}</span> is <span class="number">${</span>age<span class="number">}</span> years old`</span>;
+
+<span class="comment">// Multi-line strings</span>
+<span class="keyword">let</span> multiline = <span class="string">`
+  This is a
+  multi-line
+  string
+`</span>;
+            </div>
+            
+            <h4>Spread and Rest Operators</h4>
+            <div class="code-block">
+<span class="comment">// Spread operator (arrays)</span>
+<span class="keyword">let</span> arr1 = [1, 2, 3];
+<span class="keyword">let</span> arr2 = [4, 5, 6];
+<span class="keyword">let</span> combined = [...arr1, ...arr2]; <span class="comment">// [1, 2, 3, 4, 5, 6]</span>
+
+<span class="comment">// Spread operator (objects)</span>
+<span class="keyword">let</span> obj1 = {a: 1, b: 2};
+<span class="keyword">let</span> obj2 = {c: 3, d: 4};
+<span class="keyword">let</span> merged = {...obj1, ...obj2}; <span class="comment">// {a: 1, b: 2, c: 3, d: 4}</span>
+
+<span class="comment">// Rest parameters</span>
+<span class="keyword">function</span> <span class="function">sum</span>(...numbers) {
+  <span class="keyword">return</span> numbers.reduce((total, num) => total + num, 0);
+}
+            </div>
+            
+            <h3>Modules</h3>
+            <p>ES6 introduced a native module system for JavaScript.</p>
+            
+            <div class="code-block">
+<span class="comment">// math.js (exporting)</span>
+<span class="keyword">export const</span> PI = 3.14159;
+<span class="keyword">export function</span> <span class="function">square</span>(x) {
+  <span class="keyword">return</span> x * x;
+}
+<span class="keyword">export default function</span> <span class="function">multiply</span>(x, y) {
+  <span class="keyword">return</span> x * y;
+}
+
+<span class="comment">// app.js (importing)</span>
+<span class="keyword">import</span> multiply, { PI, square } <span class="keyword">from</span> <span class="string">'./math.js'</span>;
+
+console.log(PI); <span class="comment">// 3.14159</span>
+console.log(square(5)); <span class="comment">// 25</span>
+console.log(multiply(4, 7)); <span class="comment">// 28</span>
+            </div>
+            
+            <h3>Error Handling</h3>
+            <p>Proper error handling is essential for robust applications.</p>
+            
+            <div class="code-block">
+<span class="comment">// Try-catch-finally</span>
+<span class="keyword">try</span> {
+  <span class="comment">// Code that might throw an error</span>
+  <span class="keyword">let</span> result = riskyOperation();
+  console.log(result);
+} <span class="keyword">catch</span> (error) {
+  <span class="comment">// Handle the error</span>
+  console.error(<span class="string">"An error occurred:"</span>, error.message);
+} <span class="keyword">finally</span> {
+  <span class="comment">// Code that runs regardless of success or failure</span>
+  console.log(<span class="string">"Operation attempted"</span>);
+}
+
+<span class="comment">// Throwing custom errors</span>
+<span class="keyword">function</span> <span class="function">validateInput</span>(input) {
+  <span class="keyword">if</span> (!input) {
+    <span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string">"Input cannot be empty"</span>);
+  }
+  <span class="keyword">if</span> (input.length < 5) {
+    <span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string">"Input must be at least 5 characters"</span>);
+  }
+}
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h3>JavaScript Mastery</h3>
+                        <p>A comprehensive resource for learning JavaScript, from basics to advanced concepts.</p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Lesson Topics</h3>
+                        <ul>
+                            <li><a href="#basics">JavaScript Basics</a></li>
+                            <li><a href="#dom">DOM Manipulation</a></li>
+                            <li><a href="#functions">Functions</a></li>
+                            <li><a href="#objects">Objects & Arrays</a></li>
+                            <li><a href="#advanced">Advanced Topics</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">JavaScript Cheat Sheet</a></li>
+                            <li><a href="#">Practice Exercises</a></li>
+                            <li><a href="#">Code Challenges</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2023 JavaScript Mastery. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Interactive editor functionality
+            function runCode() {
+                const code = document.getElementById('js-editor').innerText;
+                try {
+                    // Using eval for simplicity in this demo
+                    // Note: In production, be cautious with eval due to security implications
+                    eval(code);
+                } catch (error) {
+                    document.getElementById("output").innerHTML = 
+                        `<div style="color: red;">Error: ${error.message}</div>`;
+                }
+            }
+            
+            function resetEditor() {
+                document.getElementById('js-editor').innerText = `// Welcome to the JavaScript editor!
+// Try changing the code below and click "Run Code"
+
+// DOM manipulation example
+const output = document.getElementById("output");
+output.innerHTML = ""; // Clear previous output
+
+// Create and style elements
+const title = document.createElement("h3");
+title.textContent = "DOM Manipulation Example";
+title.style.color = "#f0db4f";
+
+const list = document.createElement("ul");
+["Create elements", "Modify styles", "Handle events", "Traverse DOM"].forEach(item => {
+  const li = document.createElement("li");
+  li.textContent = item;
+  li.style.margin = "8px 0";
+  list.appendChild(li);
+});
+
+// Add to output
+output.appendChild(title);
+output.appendChild(list);
+
+// Add interactive button
+const button = document.createElement("button");
+button.textContent = "Click Me!";
+button.style.background = "#f0db4f";
+button.style.color = "#323330";
+button.style.border = "none";
+button.style.padding = "10px 15px";
+button.style.borderRadius = "4px";
+button.style.marginTop = "15px";
+button.style.cursor = "pointer";
+
+button.addEventListener("click", () => {
+  alert("Button clicked! DOM manipulation is working!");
+});
+
+output.appendChild(button);`;
+                
+                document.getElementById("output").innerHTML = "";
+            }
+            
+            // Scroll to section function
+            function scrollToSection(sectionId) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    window.scrollTo({
+                        top: section.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            
+            // Initialize the page with some code execution
+            window.onload = function() {
+                runCode();
+            };
+        </script>
 </body>
 </html>
